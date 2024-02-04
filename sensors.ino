@@ -19,7 +19,7 @@ void setup()
     // Use the Serial Monitor to view printed messages
     Serial.begin(9600);
     while (!Serial) ; // wait for serial port to connect. Needed for native USB
-    Serial.println("start");
+
     
     pinMode(Buzzer, OUTPUT); // Set Buzzer pin as output
 }
@@ -30,15 +30,24 @@ void loop()
     int flameValue = analogRead(Flame);
     int smokeValue = analogRead(MQ5_5V_PIN_AOUT);
     
-    Serial.print("Flame: ");
+    Serial.print("Flame : ");
     Serial.print(flameValue);
-    Serial.print(", Smoke: ");
+    Serial.print(", Smoke : ");
     Serial.println(smokeValue);
     
     if (flameValue > flameThreshold || smokeValue > smokeThreshold) {
         digitalWrite(Buzzer, HIGH); // Turn on the Buzzer
     } else {
         digitalWrite(Buzzer, LOW); // Turn off the Buzzer
+    }
+    
+    if (Serial.available()) {
+        char input = Serial.read();
+        if (input == 'S' || input == 's') {
+            while (true) {
+                // Stop the program execution
+            }
+        }
     }
     
     delay(1000); // delay for 1 second
