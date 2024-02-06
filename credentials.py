@@ -1,5 +1,5 @@
-ACCESS_TOKEN = "i17jsf46y9ql86eep0bt"
-THINGSBOARD_SERVER = '101.173.168.30'
+ACCESS_TOKEN = "Your access token"
+THINGSBOARD_SERVER = 'your server'
 THINGSBOARD_PORT = 1883
 import socket
 import uuid
