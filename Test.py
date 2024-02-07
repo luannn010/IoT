@@ -4,7 +4,7 @@ from tb_gateway_mqtt import TBDeviceMqttClient
 import serial
 import credentials
 
-ACCESS_TOKEN = "i17jsf46y9ql86eep0bt"
+ACCESS_TOKEN = "Your Access Token"
 THINGSBOARD_SERVER = credentials.THINGSBOARD_SERVER
 THINGSBOARD_PORT = credentials.THINGSBOARD_PORT
     
