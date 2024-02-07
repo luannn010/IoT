@@ -2,7 +2,7 @@ import logging.handlers
 import os
 from tb_gateway_mqtt import TBDeviceMqttClient
 import serial
-import credentials # Import the credentials file to access the access token and ThingsBoard server details
+import credentials
 
 ACCESS_TOKEN = credentials.ACCESS_TOKEN
 THINGSBOARD_SERVER = credentials.THINGSBOARD_SERVER

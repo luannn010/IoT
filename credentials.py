@@ -1,5 +1,5 @@
-ACCESS_TOKEN = "Your access token"
-THINGSBOARD_SERVER = 'your server'
+ACCESS_TOKEN = "srzyff3h6k1b36o60jkf"
+THINGSBOARD_SERVER = '101.173.168.30'
 THINGSBOARD_PORT = 1883
 import socket
 import uuid
@@ -22,5 +22,8 @@ def get_network_info():
 
 # Get and print the IP address and MAC address
 ip_address, mac_address = get_network_info()
+
+
+
 
 
