@@ -2,8 +2,7 @@ import serial
 import time
 import paho.mqtt.client as mqtt
 import json
-import os
-import credentials
+import credentials.credentials as credentials
 
 # Serial port for Arduino
 device = '/dev/ttyS3'  
