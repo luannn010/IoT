@@ -5,8 +5,9 @@ THINGSBOARD_SERVER = '101.173.168.30'
 THINGSBOARD_PORT = 1883
 import socket
 import uuid
+import os
 
-def get_network_info():
+def get_network_info_Windows():
     try:
         # Get the hostname of the system
         hostname = socket.gethostname()
@@ -21,11 +22,33 @@ def get_network_info():
     except Exception as e:
         print(f"Error: {e}")
         return None, None
+    
+    
+def get_network_info_Linux():
+    try:
+        # Get the IP address
+        ip_address = os.popen('''hostname -I''').readline().replace('\n', '').replace(',', '.')[:-1]
 
-# Get and print the IP address and MAC address
-ip_address, mac_address = get_network_info()
+        # Get the MAC address
+        mac_address = os.popen('''cat /sys/class/net/*/address''').readline().replace('\n', '').replace(',', '.')
 
-# ACCESS_TOKEN = "i17jsf46y9ql86eep0bt"
+        return ip_address, mac_address
+    except Exception as e:
+        print(f"Error: {e}")
+        return None, None
+    
+def get_network_info_MacOS():
+    try:
+        # Get the IP address
+        ip_address = os.popen('''hostname -I''').readline().replace('\n', '').replace(',', '.')[:-1]
+
+        # Get the MAC address
+        mac_address = os.popen('''ifconfig en0 | awk '/ether/{print $2}' ''').readline().replace('\n', '').replace(',', '.')
+
+        return ip_address, mac_address
+    except Exception as e:
+        print(f"Error: {e}")
+        return None, None
 
 
 

@@ -36,9 +36,12 @@ def prepare_data(msg):
     temperature_str = msg.split(' ')[1]
     temperature = float(temperature_str)
 
-    ip_address = os.popen('''hostname -I''').readline().replace('\n', '').replace(',', '.')[:-1]
-    mac_address = os.popen('''cat /sys/class/net/*/address''').readline().replace('\n', '').replace(',', '.')
-
+    # In case using Windows Edge Device 
+    ip_address, mac_address = credentials.get_network_info_Windows()
+    # In case using Linux Edge Device
+    # ip_address, mac_address = credentials.get_network_info_Linux()
+    # In case using MacOS Edge Device
+    # ip_address, mac_address = credentials.get_network_info_MacOS()
     data = {
         'ip_address': ip_address,
         'macaddress': mac_address,

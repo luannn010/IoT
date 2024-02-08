@@ -46,9 +46,12 @@ def rpc_callback(id, request_body):
 # This implementation currently only takes a singly byte as the message, which is passed into the motion_active variable.
 def prepareData(msg):
 	motion_active = msg.decode("utf-8")
-	ip_address = os.popen('''hostname -I''').readline().replace('\n', '').replace(',', '.')[:-1]
-	mac_address = os.popen('''cat /sys/class/net/*/address''').readline().replace('\n', '').replace(',', '.')
-
+	# In case using Windows Edge Device 
+	ip_address, mac_address = credentials.get_network_info_Windows()
+	# In case using Linux Edge Device
+	# ip_address, mac_address = credentials.get_network_info_Linux()
+	# In case using MacOS Edge Device
+	# ip_address, mac_address = credentials.get_network_info_MacOS()
 	attributes = {
 		'ip_address': ip_address,
 		'macaddress': mac_address

@@ -8,8 +8,11 @@ ACCESS_TOKEN = credentials.ACCESS_TOKEN_E1
 THINGSBOARD_SERVER = credentials.THINGSBOARD_SERVER
 THINGSBOARD_PORT = credentials.THINGSBOARD_PORT
     
-ip_address = credentials.get_network_info()[0]
-mac_address = credentials.get_network_info()[1] 
+# In case using Windows Edge Device 
+ip_address, mac_address = credentials.get_network_info_Windows()
+# In case using Linux Edge Device
+# ip_address, mac_address = credentials.get_network_info_Linux()
+# In case using MacOS Edge Device
 
 logging.basicConfig(level=logging.DEBUG)
 client = None
