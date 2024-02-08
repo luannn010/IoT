@@ -30,9 +30,9 @@ void loop()
     int flameValue = analogRead(Flame);
     int smokeValue = analogRead(MQ5_5V_PIN_AOUT);
     
-    Serial.print("Flame : ");
+
     Serial.print(flameValue);
-    Serial.print(", Smoke : ");
+    Serial.print(",");
     Serial.println(smokeValue);
     
     if (flameValue > flameThreshold || smokeValue > smokeThreshold) {

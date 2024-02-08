@@ -1,0 +1,6 @@
+# Required packages for setting up the environment:
+pyserial              # Library for serial communication with devices
+tb-mqtt-client        # MQTT client library for ThingsBoard IoT platform
+Adafruit-Blinka       # CircuitPython compatibility layer for Raspberry Pi and other single-board computers
+pymmh3                # Library for Murmur3 hash function
+# pip install -r requirements.txt

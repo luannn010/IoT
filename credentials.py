@@ -1,4 +1,4 @@
-ACCESS_TOKEN = "srzyff3h6k1b36o60jkf"
+ACCESS_TOKEN = "i17jsf46y9ql86eep0bt"
 THINGSBOARD_SERVER = '101.173.168.30'
 THINGSBOARD_PORT = 1883
 import socket
@@ -22,6 +22,8 @@ def get_network_info():
 
 # Get and print the IP address and MAC address
 ip_address, mac_address = get_network_info()
+
+# ACCESS_TOKEN = "i17jsf46y9ql86eep0bt"
 
 
 
