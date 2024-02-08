@@ -1,12 +1,10 @@
 import logging.handlers
-import os
 from tb_gateway_mqtt import TBDeviceMqttClient
-import serial
 import credentials
 import random
 import time
 
-ACCESS_TOKEN = credentials.ACCESS_TOKEN
+ACCESS_TOKEN = credentials.ACCESS_TOKEN_E1
 THINGSBOARD_SERVER = credentials.THINGSBOARD_SERVER
 THINGSBOARD_PORT = credentials.THINGSBOARD_PORT
     
@@ -15,29 +13,10 @@ mac_address = credentials.get_network_info()[1]
 
 logging.basicConfig(level=logging.DEBUG)
 client = None
-# ser = serial.Serial(
-#     # port='COM6', # For Windows
-#     port='/dev/cu.usbserial-110', # For MacOS
-#     baudrate=9600,
-#     parity="N",
-#     stopbits=1,
-#     bytesize=8
-# )
-# ser.isOpen()
 
 # default blinking period
 period = 1.0
 
-# Read the serial for any message. If a message is received, read it byte-by-byte and return it.
-# def readSerial():
-#     out = b''  # Initialize an empty byte array
-#     while ser.in_waiting > 0:
-#         byte = ser.read()
-#         out += byte
-#         if byte == b'\n':  # Assuming messages end with a newline character
-#             return out.strip()  # Strip any leading/trailing whitespaces
-
-#     return None
 
 # callback function that will call when we will send RPC
 def rpc_callback(id, request_body):
@@ -45,7 +24,7 @@ def rpc_callback(id, request_body):
     print(request_body)
     method = request_body.get('method')
     if method == 'getTelemetry':
-        attributes, telemetry = prepareData(ser)
+        attributes, telemetry = prepareData()
         client.send_attributes(attributes)
         client.send_telemetry(telemetry)
     else:
@@ -56,8 +35,8 @@ def rpc_callback(id, request_body):
 # This implementation currently only takes a singly byte as the message, which is passed into the motion_active variable.
 def prepareData():
     
-    flame_value = random.randint(900, 990)
-    smoke_value = random.randint(63, 100)
+    flame_value = random.randint(900, 1250)
+    smoke_value = random.randint(80, 110)
 
     attributes = {
         'ip_address': ip_address,
